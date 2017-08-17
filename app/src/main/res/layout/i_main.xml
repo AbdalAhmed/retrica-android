@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.fobid.retrica.ui.widgets.ChipTextView xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.fobid.retrica.ui.widgets.ChipTextView
         android:id="@id/chip"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/chips_height"
         android:gravity="center"
         android:paddingLeft="@dimen/chips_padding"
         android:paddingRight="@dimen/chips_padding"
-        android:text="하하호호호"
-        app:backgroundColor="@color/colorAccent" />
+        app:backgroundColor="@color/colorAccent"
+        tools:text="chip" />
 </LinearLayout>

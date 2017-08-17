@@ -1,5 +1,6 @@
 package com.fobid.retrica.ui.viewholders;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -19,7 +20,10 @@ public class MainViewHolder {
         chipTextView = itemView.findViewById(R.id.chip);
     }
 
+    @SuppressLint("DefaultLocale")
     public void bindData(final int position) {
+        chipTextView.setText(String.format("position: %d", position));
+
         if (position % 2 == 0) {
             chipTextView.setBackgroundColor(Color.LTGRAY);
         } else {
