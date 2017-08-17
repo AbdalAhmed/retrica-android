@@ -7,4 +7,6 @@ package com.fobid.retrica.ui.views;
 public interface ListViewView extends BaseView {
 
     void startRecyclerViewActivity();
+
+    void startGitHubActivity();
 }

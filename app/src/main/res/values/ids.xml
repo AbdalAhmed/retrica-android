@@ -3,4 +3,10 @@
     <item name="list_view" type="id" />
     <item name="recycler_view" type="id" />
     <item name="chip" type="id" />
+    <item name="github" type="id" />
+    <item name="swipe_refresh" type="id" />
+    <item name="login" type="id" />
+    <item name="avatar" type="id" />
+    <item name="github_url" type="id" />
+    <item name="sync" type="id" />
 </resources>

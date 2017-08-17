@@ -49,6 +49,9 @@ public class RecyclerViewActivity extends BaseActivity<RecyclerViewPresenter> im
                 return true;
             case R.id.recycler_view:
                 return true;
+            case R.id.github:
+                startGitHubActivity();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -56,6 +59,13 @@ public class RecyclerViewActivity extends BaseActivity<RecyclerViewPresenter> im
     @Override
     public void startListViewActivity() {
         final Intent intent = new Intent(this, ListViewActivity.class);
+        startActivity(intent);
+        back();
+    }
+
+    @Override
+    public void startGitHubActivity() {
+        final Intent intent = new Intent(this, GitHubActivity.class);
         startActivity(intent);
         back();
     }

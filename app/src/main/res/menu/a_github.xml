@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@id/sync"
+        android:icon="@drawable/ic_sync_black_24dp"
+        android:title="@string/sync"
+        app:showAsAction="always" />
+
+    <group>
+        <item
+            android:id="@id/list_view"
+            android:title="@string/list_view" />
+
+        <item
+            android:id="@id/recycler_view"
+            android:title="@string/recycler_view" />
+    </group>
+</menu>

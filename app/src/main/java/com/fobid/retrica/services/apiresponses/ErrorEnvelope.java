@@ -11,6 +11,8 @@ import com.fobid.retrica.services.ApiException;
 
 public class ErrorEnvelope {
 
+    public String message;
+
     public static
     @Nullable
     ErrorEnvelope fromThrowable(final @NonNull Throwable t) {

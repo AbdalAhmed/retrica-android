@@ -21,6 +21,10 @@
         </activity>
 
         <activity android:name=".ui.activities.RecyclerViewActivity" />
+
+        <activity android:name=".ui.activities.GitHubActivity" />
+
+        <activity android:name="com.tfc.webviewer.ui.WebViewerActivity" />
     </application>
 
 </manifest>

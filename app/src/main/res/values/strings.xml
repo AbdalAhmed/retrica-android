@@ -2,4 +2,6 @@
     <string name="app_name">retrica</string>
     <string name="list_view">ListView</string>
     <string name="recycler_view">RecyclerView</string>
+    <string name="github">GitHub</string>
+    <string name="sync">동기화</string>
 </resources>
