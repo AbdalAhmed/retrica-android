@@ -3,6 +3,7 @@ package com.fobid.retrica;
 import android.app.Application;
 import android.support.annotation.NonNull;
 
+import com.akaita.java.rxjava2debug.RxJava2Debug;
 import com.facebook.stetho.Stetho;
 import com.uphyca.stetho_realm.RealmInspectorModulesProvider;
 
@@ -28,6 +29,7 @@ public class ThisApplication extends Application {
         component.inject(this);
 
         Timber.plant(new Timber.DebugTree());
+        RxJava2Debug.enableRxJava2AssemblyTracking();
 
         Stetho.initialize(
                 Stetho.newInitializerBuilder(this)

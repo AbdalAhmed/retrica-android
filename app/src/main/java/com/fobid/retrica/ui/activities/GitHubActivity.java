@@ -8,6 +8,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.fobid.retrica.R;
 import com.fobid.retrica.libs.qualifiers.RequiresPresenter;
@@ -62,6 +63,11 @@ public class GitHubActivity extends BaseActivity<GitHubPresenter> implements Git
                 .observeOn(AndroidSchedulers.mainThread())
                 .compose(bindToLifecycle())
                 .subscribe(__ -> hideLoading());
+
+        presenter.showToast()
+                .observeOn(AndroidSchedulers.mainThread())
+                .compose(bindToLifecycle())
+                .subscribe(this::showToast);
     }
 
     @Override
@@ -124,5 +130,10 @@ public class GitHubActivity extends BaseActivity<GitHubPresenter> implements Git
     @Override
     public void hideLoading() {
         refreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void showToast(@NonNull String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 }

@@ -17,4 +17,6 @@ public interface GitHubView extends BaseView {
     void showLoading();
 
     void hideLoading();
+
+    void showToast(@NonNull String text);
 }

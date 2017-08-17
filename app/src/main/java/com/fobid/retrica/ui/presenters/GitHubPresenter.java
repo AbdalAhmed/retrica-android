@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.fobid.retrica.libs.Environment;
 import com.fobid.retrica.models.GitHubUser;
 import com.fobid.retrica.services.ApiClientType;
+import com.fobid.retrica.services.apiresponses.ErrorEnvelope;
 import com.fobid.retrica.ui.adapters.GitHubAdapter;
 import com.fobid.retrica.ui.viewholders.GitHubViewHolder;
 import com.fobid.retrica.ui.views.GitHubView;
@@ -16,6 +17,9 @@ import io.reactivex.Observable;
 import io.reactivex.subjects.BehaviorSubject;
 import io.reactivex.subjects.PublishSubject;
 import io.realm.Realm;
+
+import static com.fobid.retrica.libs.rx.transformers.Transformers.pipeApiErrorsTo;
+import static com.fobid.retrica.libs.rx.transformers.Transformers.pipeErrorsTo;
 
 /**
  * Created by android01 on 2017. 8. 17..
@@ -46,20 +50,30 @@ public class GitHubPresenter extends BasePresenter<GitHubView> implements GitHub
                 .subscribe();
 
         syncClick.onNext(0);
+
+        genericUsersError()
+                .mergeWith(usersError.map(Throwable::getMessage))
+                .compose(bindToLifecycle())
+                .subscribe(showToast);
     }
 
     private
     @NonNull
     Observable<List<GitHubUser>> users() {
-        return client.users();
+        return client.users()
+                .compose(pipeApiErrorsTo(usersApiError))
+                .compose(pipeErrorsTo(usersError));
     }
 
     private final PublishSubject<Object> syncClick = PublishSubject.create();
     private final PublishSubject<String> urlClick = PublishSubject.create();
     private Observable<String> showWebViewer;
+    private final PublishSubject<Throwable> usersError = PublishSubject.create();
+    private final PublishSubject<ErrorEnvelope> usersApiError = PublishSubject.create();
 
     private final BehaviorSubject<Object> showLoading = BehaviorSubject.create();
     private final BehaviorSubject<Object> hideLoading = BehaviorSubject.create();
+    private final BehaviorSubject<String> showToast = BehaviorSubject.create();
 
     public void syncClick() {
         syncClick.onNext(0);
@@ -86,5 +100,18 @@ public class GitHubPresenter extends BasePresenter<GitHubView> implements GitHub
     @NonNull
     Observable<Object> hideLoading() {
         return hideLoading;
+    }
+
+    public
+    @NonNull
+    Observable<String> showToast() {
+        return showToast;
+    }
+
+    public
+    @NonNull
+    Observable<String> genericUsersError() {
+        return usersApiError
+                .map(errorEnvelope -> errorEnvelope.message);
     }
 }
