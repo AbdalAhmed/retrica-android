@@ -8,23 +8,23 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.fobid.retrica.R;
-import com.fobid.retrica.ui.viewholders.MainViewHolder;
+import com.fobid.retrica.ui.viewholders.ListViewHolder;
 
 /**
  * Created by android01 on 2017. 8. 17..
  */
 
-public class MainAdapter extends BaseAdapter {
+public class ListViewAdapter extends BaseAdapter {
 
     private final LayoutInflater inflater;
 
-    public MainAdapter(final @NonNull Context context) {
+    public ListViewAdapter(final @NonNull Context context) {
         inflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getCount() {
-        return 10;
+        return 100;
     }
 
     @Override
@@ -39,14 +39,14 @@ public class MainAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        final MainViewHolder viewHolder;
+        final ListViewHolder viewHolder;
 
         if (view != null) {
-            viewHolder = (MainViewHolder) view.getTag();
+            viewHolder = (ListViewHolder) view.getTag();
         } else {
             view = inflater.inflate(R.layout.i_main, viewGroup, false);
 
-            viewHolder = new MainViewHolder(view);
+            viewHolder = new ListViewHolder(view);
             view.setTag(viewHolder);
         }
 

@@ -4,5 +4,7 @@ package com.fobid.retrica.ui.views;
  * Created by android01 on 2017. 8. 17..
  */
 
-public interface MainView extends BaseView {
+public interface ListViewView extends BaseView {
+
+    void startRecyclerViewActivity();
 }

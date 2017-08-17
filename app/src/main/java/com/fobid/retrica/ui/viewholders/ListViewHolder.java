@@ -12,11 +12,11 @@ import com.fobid.retrica.ui.widgets.ChipTextView;
  * Created by android01 on 2017. 8. 17..
  */
 
-public class MainViewHolder {
+public class ListViewHolder {
 
     private ChipTextView chipTextView;
 
-    public MainViewHolder(final @NonNull View itemView) {
+    public ListViewHolder(final @NonNull View itemView) {
         chipTextView = itemView.findViewById(R.id.chip);
     }
 
@@ -26,7 +26,9 @@ public class MainViewHolder {
 
         if (position % 2 == 0) {
             chipTextView.setBackgroundColor(Color.LTGRAY);
+            chipTextView.setTextColor(Color.BLACK);
         } else {
+            chipTextView.setBackgroundColor(Color.BLUE);
             chipTextView.setTextColor(Color.WHITE);
         }
     }
